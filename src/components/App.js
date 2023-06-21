@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Navigate } from "react";
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from 'react-router-dom';
 import api from "../utils/api";
 import Header from './Header';
 import Main from './Main';
@@ -126,10 +126,12 @@ function App() {
             cards={cards}
             onCardClick={handleCardClick}
             onCardLike={handleCardLike}
-            onCardDelete={handleConfirmClick} />}
+            onCardDelete={handleConfirmClick}
+            isLoggedIn={isLoggedIn} />}
           />
           <Route path="/sign-up" element={<Register />} />
           <Route path="/sign-in" element={<Login />} />
+          <Route path="*" element={isLoggedIn ? <Navigate to="/" replace/> : <Navigate to="sign-in" replace/>} />
         </Routes>
         {/* <Main
           onEditAvatar={handleEditAvatarClick}
