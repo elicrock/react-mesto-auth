@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Navigate } from "react";
+import { Routes, Route } from 'react-router-dom';
 import api from "../utils/api";
 import Header from './Header';
 import Main from './Main';
+import Register from "./Register";
+import Login from "./Login";
 import Footer from './Footer';
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import ConfirmPopup from "./ConfirmPopup";
 import ImagePopup from "./ImagePopup";
+import ProtectedRoute from './ProtectedRoute';
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function App() {
@@ -20,6 +24,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     Promise.all([api.getInitialCards(), api.getUserInfo()])
@@ -112,7 +117,21 @@ function App() {
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Header />
-        <Main
+        <Routes>
+          <Route path="/" element={<ProtectedRoute
+            element={Main}
+            onEditAvatar={handleEditAvatarClick}
+            onEditProfile={handleEditProfileClick}
+            onAddPlace={handleAddPlaceClick}
+            cards={cards}
+            onCardClick={handleCardClick}
+            onCardLike={handleCardLike}
+            onCardDelete={handleConfirmClick} />}
+          />
+          <Route path="/sign-up" element={<Register />} />
+          <Route path="/sign-in" element={<Login />} />
+        </Routes>
+        {/* <Main
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
@@ -120,7 +139,7 @@ function App() {
           onCardClick={handleCardClick}
           onCardLike={handleCardLike}
           onCardDelete={handleConfirmClick}
-        />
+        /> */}
         <Footer />
 
         <EditAvatarPopup
