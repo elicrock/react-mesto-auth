@@ -65,6 +65,13 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  function onLogin(email, password) {
+    // !!! Добавить логику входа на сайт !!!
+    // !!! Добавить логику входа на сайт !!!
+    // !!! Добавить логику входа на сайт !!!
+    // !!! Добавить логику входа на сайт !!!
+  }
+
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
@@ -130,8 +137,8 @@ function App() {
             isLoggedIn={isLoggedIn} />}
           />
           <Route path="/sign-up" element={<Register />} />
-          <Route path="/sign-in" element={<Login />} />
-          <Route path="*" element={isLoggedIn ? <Navigate to="/" replace/> : <Navigate to="sign-in" replace/>} />
+          <Route path="/sign-in" element={<Login onLogin={onLogin} />} />
+          <Route path="*" element={isLoggedIn ? <Navigate to="/" replace /> : <Navigate to="sign-in" replace />} />
         </Routes>
         {/* <Main
           onEditAvatar={handleEditAvatarClick}
