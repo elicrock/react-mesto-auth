@@ -66,10 +66,11 @@ function App() {
   }
 
   function onLogin(email, password) {
-    // !!! Добавить логику входа на сайт !!!
-    // !!! Добавить логику входа на сайт !!!
-    // !!! Добавить логику входа на сайт !!!
-    // !!! Добавить логику входа на сайт !!!
+    console.log('asfasfasf');
+  }
+
+  function onRegister(email, password) {
+    console.log('asfasfasf');
   }
 
   function handleCardLike(card) {
@@ -123,21 +124,42 @@ function App() {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
-        <Header />
         <Routes>
-          <Route path="/" element={<ProtectedRoute
-            element={Main}
-            onEditAvatar={handleEditAvatarClick}
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            cards={cards}
-            onCardClick={handleCardClick}
-            onCardLike={handleCardLike}
-            onCardDelete={handleConfirmClick}
-            isLoggedIn={isLoggedIn} />}
+          <Route path="/"
+            element={
+              <>
+                <Header />
+                <ProtectedRoute
+                  element={Main}
+                  onEditAvatar={handleEditAvatarClick}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  cards={cards}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleConfirmClick}
+                  isLoggedIn={isLoggedIn}
+                />
+                <Footer />
+              </>
+            }
           />
-          <Route path="/sign-up" element={<Register />} />
-          <Route path="/sign-in" element={<Login onLogin={onLogin} />} />
+          <Route path="/sign-up"
+            element={
+              <>
+                <Header linkText="Войти" link="/sign-in" />
+                <Register onRegister={onRegister} />
+              </>
+            }
+          />
+          <Route path="/sign-in"
+            element={
+              <>
+                <Header linkText="Регистрация" link="/sign-up" />
+                <Login onLogin={onLogin} />
+              </>
+            }
+          />
           <Route path="*" element={isLoggedIn ? <Navigate to="/" replace /> : <Navigate to="sign-in" replace />} />
         </Routes>
         {/* <Main
@@ -149,7 +171,6 @@ function App() {
           onCardLike={handleCardLike}
           onCardDelete={handleConfirmClick}
         /> */}
-        <Footer />
 
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}

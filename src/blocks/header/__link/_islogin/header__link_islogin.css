@@ -1,0 +1,9 @@
+.header__link_islogin {
+  color: #A9A9A9;
+  transition: color 0.2s;
+}
+
+.header__link_islogin:hover {
+  color: #fff;
+  opacity: 1;
+}
