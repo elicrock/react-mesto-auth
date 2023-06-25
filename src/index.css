@@ -56,3 +56,6 @@
 @import url('./blocks/popup/__save-button/popup__save-button.css');
 @import url('./blocks/popup/__save-button/_disabled/popup__save-button_disabled.css');
 @import url('./blocks/popup/__confirmation-btn/popup__confirmation-btn.css');
+@import url('./blocks/popup/__container-tooltip/popup__container-tooltip.css');
+@import url('./blocks/popup/__img-tooltip/popup__img-tooltip.css');
+@import url('./blocks/popup/__title-tooltip/popup__title-tooltip.css');
