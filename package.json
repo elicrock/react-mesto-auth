@@ -20,6 +20,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://elicrock.github.io/react-mesto-auth",
   "eslintConfig": {
     "extends": [
       "react-app",
