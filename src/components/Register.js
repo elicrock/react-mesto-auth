@@ -1,27 +1,33 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import { useForm } from "../hooks/useForm";
+import React, { useEffect } from 'react';
+import AuthForm from './AuthForm';
+import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 const Register = ({ onRegister }) => {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange, errors, isValid, resetForm } = useFormAndValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onRegister(values);
   };
 
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
+
   return (
-    <div className="login">
-      <h2 className="login__title">Регистрация</h2>
-      <form className="login__form" onSubmit={handleSubmit}>
-        <div className="login__inputs">
-          <input type="email" name="email" className="login__input" minLength="2" maxLength="30" placeholder="Email" value={values.email || ''} onChange={handleChange} required />
-          <input type="password" name="password" className="login__input" minLength="6" maxLength="18" placeholder="Пароль" value={values.password || ''} onChange={handleChange} required />
-        </div>
-        <button type="submit" className="login__button">Зарегистрироваться</button>
-      </form>
-      <p className="login__sign-in">Уже зарегистрированы? <Link to="/sign-in" className="login__link">Войти</Link></p>
-    </div>
+    <AuthForm
+      title="Регистрация"
+      name="register"
+      btnText="Зарегистрироваться"
+      onSubmit={handleSubmit}
+      isValid={isValid}
+      onRegister={onRegister}
+    >
+      <input type="email" name="email" className="login__input" minLength="2" maxLength="30" placeholder="Email" value={values.email || ''} onChange={handleChange} required />
+      <span className={`login__input-error email-error ${errors.email && 'login__input-error_active'}`}>{errors.email}</span>
+      <input type="password" name="password" className="login__input" minLength="6" maxLength="18" placeholder="Пароль" value={values.password || ''} onChange={handleChange} required />
+      <span className={`login__input-error password-error ${errors.password && 'login__input-error_active'}`}>{errors.password}</span>
+    </AuthForm>
   );
 };
 
