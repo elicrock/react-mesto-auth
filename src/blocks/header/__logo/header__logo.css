@@ -3,6 +3,8 @@
   height: 33px;
   background: url('../../../images/logo.svg') center/cover no-repeat;
   text-decoration: none;
+  flex-shrink: 0;
+  order: 1;
 }
 
 @media screen and (max-width: 768px) {
@@ -11,6 +13,12 @@
     width: calc((100vw - 320px)/(768 - 320) * (142 - 103.74) + 103.74px);
     height: calc((100vw - 320px)/(768 - 320) * (33 - 24.4) + 24.4px);
     margin-left: calc((100vw - 320px)/(768 - 320) * (0 - 27) + 27px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header__logo {
+    order: 2;
   }
 }
 

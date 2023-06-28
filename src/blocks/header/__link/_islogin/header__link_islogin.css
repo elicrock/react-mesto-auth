@@ -7,3 +7,9 @@
   color: #fff;
   opacity: 1;
 }
+
+@media screen and (max-width: 576px) {
+  .header__link_islogin {
+    margin-right: 0;
+  }
+}

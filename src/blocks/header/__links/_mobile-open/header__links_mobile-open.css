@@ -1,0 +1,9 @@
+.header__links_mobile-open {
+  display: flex;
+  order: 1;
+  /* padding: 40px 27px; */
+  flex-direction: column;
+  width: 100vw;
+  /* padding-bottom: 40px; */
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}

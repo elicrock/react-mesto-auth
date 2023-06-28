@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Header({ isLoggedIn, link, linkText, email, signOut }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function handleMenuClick() {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
   return (
     <header className="header">
       <Link to="/react-mesto-auth" className="header__logo" />
-      <nav className="header__links">
+      <nav className={`header__links ${isMenuOpen ? 'header__links_mobile-open' : ''}`}>
         {isLoggedIn && <p className="header__email">{email}</p>}
-        <Link to={link} onClick={signOut} className={`header__link ${isLoggedIn && 'header__link_islogin'}`}>{linkText}</Link>
+        <Link to={link} onClick={signOut} className={`header__link ${isLoggedIn && 'header__link_islogin'}`}>
+          {linkText}
+        </Link>
       </nav>
+      <button className="header__burger" onClick={handleMenuClick}>
+        <span className={`header__burger-line ${isMenuOpen ? 'header__burger-line_close' : ''}`}></span>
+      </button>
     </header>
+
+    // <header className="header">
+    //   <Link to="/react-mesto-auth" className="header__logo" />
+    //   <nav className="header__links">
+    //     {isLoggedIn && <p className="header__email">{email}</p>}
+    //     <Link to={link} onClick={signOut} className={`header__link ${isLoggedIn && 'header__link_islogin'}`}>{linkText}</Link>
+    //   </nav>
+    // </header>
   );
 }
 

@@ -1,4 +1,12 @@
 .header__links {
   display: flex;
+  align-items: center;
   gap: 24px;
+  order: 2;
+}
+
+@media screen and (max-width: 576px) {
+  .header__links {
+    display: none;
+  }
 }
