@@ -4,7 +4,6 @@
   background: url('../../../images/logo.svg') center/cover no-repeat;
   text-decoration: none;
   flex-shrink: 0;
-  order: 1;
 }
 
 @media screen and (max-width: 768px) {

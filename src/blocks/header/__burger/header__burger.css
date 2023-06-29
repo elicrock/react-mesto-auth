@@ -1,5 +1,5 @@
 .header__burger {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -16,12 +16,6 @@
   .header__burger {
     /* calc((100vw - Vmin)/(Vmax - Vmin) * (Fmax - Fmin) + Fmin); */
     margin-right: calc((100vw - 320px)/(768 - 320) * (0 - 27) + 27px);
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .header__burger {
-    display: flex;
   }
 }
 
