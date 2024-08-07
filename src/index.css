@@ -43,6 +43,7 @@
 @import url('./blocks/element/__like-btn/element__like-btn.css');
 @import url('./blocks/element/__like-btn/_active/element__like-btn_active.css');
 @import url('./blocks/element/__likes-counter/element__likes-counter.css');
+@import url('./blocks/element/__likes-users/element__likes-users.css');
 @import url('./blocks/footer/footer.css');
 @import url('./blocks/footer/__copyright/footer__copyright.css');
 @import url('./blocks/popup/popup.css');

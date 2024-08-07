@@ -31,6 +31,13 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
         <div className="element__like">
           <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick}></button>
           <p className="element__likes-counter">{card.likes.length}</p>
+          {card.likes.length !== 0 &&
+            <div className={`element__likes-users ${card.likes.length > 5 ? 'element__likes-users_wrap' : ''}`}>
+              {card.likes.map((user) => (
+                <img src={user.avatar} alt={`${user.name} (аватар)`} title={user.name} className="element__likes-user" />
+              ))}
+            </div>
+          }
         </div>
       </div>
     </li>
